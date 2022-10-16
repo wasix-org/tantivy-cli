@@ -155,7 +155,10 @@ fn ask_add_num_field_with_options(
             schema_builder.add_i64_field(field_name, int_options);
         }
         Type::Date => {
-            schema_builder.add_date_field(field_name, int_options);
+            let opts = DateOptions::default();
+            // TODO: prompts!
+
+            schema_builder.add_date_field(field_name, opts);
         }
         _ => {
             // We only pass to this function if the field type is numeric
@@ -217,6 +220,12 @@ fn ask_add_field(schema_builder: &mut SchemaBuilder) {
         }
         Type::Json => {
             ask_add_field_json(&field_name, schema_builder);
+        }
+        Type::Bool => {
+            todo!()
+        }
+        Type::IpAddr => {
+            todo!()
         }
     }
 }

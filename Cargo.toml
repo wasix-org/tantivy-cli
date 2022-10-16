@@ -29,7 +29,12 @@ chan = "0.1"
 log = "0.4"
 futures = "0.3"
 env_logger = "0.9"
-tantivy = "0.18.0"
+tantivy = { version = "0.18.0", default-features = false, features = [] }
+
+[features]
+default = ["mmap"]
+mmap = ["tantivy/mmap"]
+
 
 [[bin]]
 name = "tantivy"
@@ -41,3 +46,7 @@ opt-level = 3
 debug = true
 debug-assertions = false
 lto = true
+
+[patch.crates-io]
+tantivy = { git = "https://github.com/theduke/tantivy", branch = "wasix" }
+getrandom = { git = "https://github.com/theduke/getrandom", branch = "wasix" }
