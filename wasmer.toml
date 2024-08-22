@@ -1,0 +1,12 @@
+[package]
+name = "wasmer/tantivy"
+description = "Tantivy is a full-text search engine library inspired by Apache Lucene and written in Rust"
+
+[[module]]
+name = "tantivy"
+source = "target/wasm32-wasmer-wasi/release/tantivy.wasm"
+
+[[command]]
+name = "tantivy"
+module = "tantivy"
+runner = "wasi"
