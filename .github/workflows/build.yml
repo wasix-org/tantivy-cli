@@ -35,5 +35,5 @@ jobs:
       uses: wasmerio/setup-wasmer@v3.1
     - name: "Publish"
       run: |
-        wasmer publish --namespace wasmer --name tantivy --bump --non-interactive --token "${{ secrets.WASMER_CIUSER_PROD_TOKEN }}"
+        wasmer publish --registry="wasmer.io" --namespace wasmer --name tantivy --bump --non-interactive --token "${{ secrets.WASMER_CIUSER_PROD_TOKEN }}"
         
