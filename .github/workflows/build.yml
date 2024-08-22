@@ -31,9 +31,8 @@ jobs:
     - name: "Build"
       run: |
         cargo wasix build --release
-    - name: "Install Wasmer"
-      run: |
-        curl https://get.wasmer.io -sSfL | sh
+    - name: Setup Wasmer
+      uses: wasmerio/setup-wasmer@v3.1
     - name: "Publish"
       run: |
         wasmer publish --namespace wasmer --name tantivy --bump --non-interactive --token "${{ secrets.WASMER_CIUSER_PROD_TOKEN }}"
