@@ -53,7 +53,7 @@ jobs:
     - name: List contents
       run: |
         ls
-    - name: "Publish"
+    - name: "Push"
       run: |
-        wasmer package publish -vvvv --registry="wasmer.io" --namespace wasmer --name tantivy --bump --non-interactive --token=${{ secrets.WASMER_CIUSER_PROD_TOKEN }} .
+        wasmer package push --registry="wasmer.io" --non-interactive --token=${{ secrets.WASMER_CIUSER_PROD_TOKEN }} .
         
