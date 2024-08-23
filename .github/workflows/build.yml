@@ -31,15 +31,28 @@ jobs:
     - name: "Build"
       run: |
         cargo wasix build --release
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: tantivy
+        path: target/wasm32-wasmer-wasi/release/tantivy.wasm
 
   publish:
     runs-on: ubuntu-22.04
-    if: ${{ github.ref == 'refs/heads/main' }}
+    # if: ${{ github.ref == 'refs/heads/main' }}
     needs: build
     name: "Publish"
     steps:
+    - uses: actions/checkout@v4
+    - name: Download Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: tantivy
     - name: Setup Wasmer
       uses: wasmerio/setup-wasmer@v3.1
+    - name: List contents
+      run: |
+        ls
     - name: "Publish"
       run: |
         wasmer package publish -vvvv --registry="wasmer.io" --namespace wasmer --name tantivy --bump --non-interactive --token=${{ secrets.WASMER_CIUSER_PROD_TOKEN }} .
