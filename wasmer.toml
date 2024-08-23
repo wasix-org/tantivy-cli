@@ -4,7 +4,7 @@ description = "Tantivy is a full-text search engine library inspired by Apache L
 
 [[module]]
 name = "tantivy"
-source = "target/wasm32-wasmer-wasi/release/tantivy.wasm"
+source = "tantivy.wasm"
 
 [[command]]
 name = "tantivy"
